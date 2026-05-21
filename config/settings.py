@@ -44,6 +44,7 @@ SITE_ID = 1
 
 INSTALLED_APPS = [
     # Third party apps.
+    "social_django",
     # User apps
     "account.apps.AccountConfig",
     "django.contrib.admin",
@@ -91,8 +92,10 @@ WSGI_APPLICATION = "config.wsgi.application"
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 if os.environ.get("FLY_APP_NAME"):
     DB_DIR = Path("/data")
+    MEDIA_ROOT = Path("/data/media")
 else:
     DB_DIR = BASE_DIR
+    MEDIA_ROOT = BASE_DIR / "media"
 
 
 DATABASES = {
@@ -145,6 +148,9 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
@@ -157,9 +163,11 @@ LOGOUT_URL = "logout"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 MEDIA_URL = "media/"
-MEDIA_ROOT = BASE_DIR / "media"
 
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     "account.authentication.EmailAuthBackend",
+    # "social_core.backends.facebook.FacebookOAuth2",
+    # "social_core.backends.twitter.TwitterOAuth",
+    # "social_core.backends.google.GoogleOAuth2",
 ]
