@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import mimetypes
 import os
 from pathlib import Path
 
@@ -155,7 +156,7 @@ STORAGES = {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
 
@@ -174,3 +175,7 @@ AUTHENTICATION_BACKENDS = [
     # "social_core.backends.twitter.TwitterOAuth",
     # "social_core.backends.google.GoogleOAuth2",
 ]
+
+# Примусово реєструємо правильні MIME-типи для CSS та JS
+mimetypes.add_type("text/css", ".css", True)
+mimetypes.add_type("text/javascript", ".js", True)
