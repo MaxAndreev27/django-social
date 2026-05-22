@@ -1,5 +1,6 @@
-// Автоматично визначаємо протокол та хост (наприклад, //127.0.0.1:8000/ або //django-social.fly.dev/)
-const currentScriptSrc = document.currentScript ? document.currentScript.src : '';
+/// Отримуємо чистий URL поточного скрипта без параметрів
+const currentScriptSrc = document.currentScript ? document.currentScript.src.split('?')[0] : '';
+// Отримуємо базовий хост сайту
 const siteUrl = currentScriptSrc ? currentScriptSrc.replace('static/js/bookmarklet.js', '') : '//127.0.0.1:8000/';
 
 const styleUrl = siteUrl + 'static/css/bookmarklet.css';
