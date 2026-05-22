@@ -46,6 +46,7 @@ SITE_ID = 1
 INSTALLED_APPS = [
     # Third party apps.
     "social_django",
+    "easy_thumbnails",
     # User apps
     "account.apps.AccountConfig",
     "images.apps.ImagesConfig",
