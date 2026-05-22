@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     "social_django",
     # User apps
     "account.apps.AccountConfig",
+    "images.apps.ImagesConfig",
+    # Inner
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -59,6 +61,7 @@ MIDDLEWARE = [
     # Third party midd
     # User midd
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    # Inner
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
