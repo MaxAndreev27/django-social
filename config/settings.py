@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # Third party apps.
     "social_django",
     "easy_thumbnails",
+    "debug_toolbar",
     # User apps
     "account.apps.AccountConfig",
     "actions.apps.ActionsConfig",
@@ -64,6 +65,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     # Third party midd
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     # User midd
     "whitenoise.middleware.WhiteNoiseMiddleware",
     # Inner
@@ -188,3 +190,7 @@ mimetypes.add_type("text/javascript", ".js", True)
 ABSOLUTE_URL_OVERRIDES = {
     "auth.user": lambda u: reverse_lazy("user_detail", args=[u.username])
 }
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
