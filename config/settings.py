@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "easy_thumbnails",
     # User apps
     "account.apps.AccountConfig",
+    "actions.apps.ActionsConfig",
     "images.apps.ImagesConfig",
     # Inner
     "django.contrib.admin",
