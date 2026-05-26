@@ -8,11 +8,12 @@
 <body>
   <div id="header">
     <span class="logo"><a href="/">Bookmarks</a></span>
-    {% if request.user.is_authenticated %}
       <ul class="menu">
-        <li {% if section == "dashboard" %}class="selected"{% endif %}>
-          <a href="{% url "dashboard" %}">My dashboard</a>
-        </li>
+        {% if request.user.is_authenticated %}
+          <li {% if section == "dashboard" %}class="selected"{% endif %}>
+            <a href="{% url "dashboard" %}">My dashboard</a>
+          </li>
+        {% endif %}
         <li {% if section == "images" %}class="selected"{% endif %}>
           <a href="{% url "images:list" %}">Images</a>
         </li>
@@ -23,7 +24,7 @@
           <a href="{% url "user_list" %}">People</a>
         </li>
       </ul>
-    {% endif %}
+   
     <span class="user">
       {% if request.user.is_authenticated %}
         Hello {{ request.user.first_name|default:request.user.username }},
