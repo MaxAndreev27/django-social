@@ -198,3 +198,13 @@ INTERNAL_IPS = [
 # REDIS_HOST = "localhost"
 # REDIS_PORT = 6379
 # REDIS_DB = 0
+# Зчитуємо REDIS_URL із секретів Fly.io. Якщо її немає, беремо локальний хост.
+REDIS_URL = os.environ.get("REDIS_URL", "redis://127.0.0.1:6379/0")
+
+# Налаштування кешу Django через Redis (Глава 6)
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": REDIS_URL,
+    }
+}
