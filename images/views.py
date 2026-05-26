@@ -106,7 +106,7 @@ def image_list(request):
     )
 
 
-@login_required
+# @login_required
 def image_ranking(request):
     # Примусово змушуємо лінтер бачити тут list, обгорнувши виклик у cast()
     image_ranking = cast(list, r.zrange("image_ranking", 0, 9, desc=True))
