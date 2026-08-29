@@ -9,12 +9,7 @@ from django.views.decorators.http import require_POST
 from actions.models import Action
 from actions.utils import create_action
 
-from .forms import (
-    LoginForm,
-    ProfileEditForm,
-    UserEditForm,
-    UserRegistrationForm,
-)
+from .forms import LoginForm, ProfileEditForm, UserEditForm, UserRegistrationForm
 from .models import Contact, Profile
 
 
