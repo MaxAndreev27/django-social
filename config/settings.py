@@ -63,6 +63,12 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 ]
 
+# `account.models` dynamically adds a `following` field to auth.User, so its
+# migration must live in our own app rather than django.contrib.auth.
+MIGRATION_MODULES = {
+    "auth": "account.migrations_auth",
+}
+
 MIDDLEWARE = [
     # Third party midd
     "debug_toolbar.middleware.DebugToolbarMiddleware",
