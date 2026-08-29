@@ -1,0 +1,142 @@
+---
+# Label definitions for GitHub issues and pull requests
+# Use this with third-party tools like github-label-sync to keep labels consistent
+
+labels:
+  # Type labels
+  - name: bug
+    description: Something isn't working
+    color: d73a49
+
+  - name: enhancement
+    description: New feature or request
+    color: a2eeef
+
+  - name: documentation
+    description: Improvements or additions to documentation
+    color: 0075ca
+
+  - name: question
+    description: Further information is requested
+    color: ffd7f2
+
+  - name: refactoring
+    description: Code refactoring without behavior changes
+    color: fbca04
+
+  # Priority labels
+  - name: "priority: critical"
+    description: Critical priority
+    color: b60205
+
+  - name: "priority: high"
+    description: High priority
+    color: ff6600
+
+  - name: "priority: medium"
+    description: Medium priority
+    color: ffcc00
+
+  - name: "priority: low"
+    description: Low priority
+    color: cccccc
+
+  # Status labels
+  - name: "status: blocked"
+    description: Issue/PR is blocked by something else
+    color: 000000
+
+  - name: "status: in-progress"
+    description: Currently being worked on
+    color: 0366d6
+
+  - name: "status: needs-review"
+    description: Needs code review
+    color: 1d76db
+
+  - name: "status: ready"
+    description: Ready to be worked on
+    color: 7057ff
+
+  - name: "status: waiting"
+    description: Waiting for feedback or decision
+    color: 9e1a99
+
+  # Area labels
+  - name: "area: account"
+    description: Related to account/authentication
+    color: 6f42c1
+
+  - name: "area: images"
+    description: Related to image functionality
+    color: 6f42c1
+
+  - name: "area: actions"
+    description: Related to user actions
+    color: 6f42c1
+
+  - name: "area: frontend"
+    description: Related to frontend/UI
+    color: 6f42c1
+
+  - name: "area: backend"
+    description: Related to backend/API
+    color: 6f42c1
+
+  # Effort labels
+  - name: "effort: small"
+    description: Small effort, quick fix
+    color: 95a00d
+
+  - name: "effort: medium"
+    description: Medium effort
+    color: bfe5bf
+
+  - name: "effort: large"
+    description: Large effort, significant work
+    color: 9fd1c4
+
+  # Other labels
+  - name: dependencies
+    description: Pull requests that update a dependency file
+    color: 0366d6
+
+  - name: security
+    description: Security-related issues
+    color: ee0701
+
+  - name: "good first issue"
+    description: Good for newcomers
+    color: 7057ff
+
+  - name: "help wanted"
+    description: Extra attention is needed
+    color: 008672
+
+  - name: wontfix
+    description: This will not be worked on
+    color: ffffff
+
+  - name: stale
+    description: No recent activity
+    color: aaaaaa
+
+  - name: "type: feature"
+    description: Feature request or enhancement
+    color: a2eeef
+
+  - name: "type: bug"
+    description: Bug report
+    color: d73a49
+
+  - name: python
+    description: Python-related
+    color: 3572A5
+
+  - name: django
+    description: Django-related
+    color: 0c3c26
+
+  - name: github-actions
+    description: GitHub Actions workflow related
+    color: 2088ff

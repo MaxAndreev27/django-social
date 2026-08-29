@@ -1,0 +1,15 @@
+# Repository configuration for GitHub
+# This file helps configure GitHub settings and workflows
+
+# Issue settings
+blank_issues_enabled: false
+contact_links:
+  - name: Security Issues
+    url: https://github.com/MaxAndreev27/django-social/security/advisories
+    about: Please report security vulnerabilities privately
+  - name: Discussions
+    url: https://github.com/MaxAndreev27/django-social/discussions
+    about: Ask questions and share ideas
+  - name: Documentation
+    url: https://github.com/MaxAndreev27/django-social#readme
+    about: Check our README and documentation
