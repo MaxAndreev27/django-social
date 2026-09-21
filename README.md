@@ -2,7 +2,7 @@
 
 A modern, feature-rich social media platform built with Django, Python, and cutting-edge web technologies. Share images, connect with other users, and discover trending content in a beautiful, responsive interface.
 
-![Django](https://img.shields.io/badge/Django-5.1.3-darkgreen)
+![Django](https://img.shields.io/badge/Django-6.1.1-darkgreen)
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Community Standards](https://img.shields.io/badge/Community-Standards%20100%25-brightgreen)
@@ -72,7 +72,7 @@ docker-compose up -d
 
 ## 🛠️ Tech Stack
 
-- **Backend**: Django 5.1.3, Django Debug Toolbar
+- **Backend**: Django 6.1.1, Django Debug Toolbar
 - **Database**: PostgreSQL (production), SQLite (development)
 - **Authentication**: Django Auth, Social Auth Core
 - **Image Processing**: Pillow, Easy Thumbnails
