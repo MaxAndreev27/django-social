@@ -20,7 +20,7 @@ redis==8.1.0
 requests==2.34.2
 requests-oauthlib==2.0.0
 social-auth-app-django==6.0.1
-social-auth-core==5.1.1
+social-auth-core==5.2.0
 sqlparse==0.6.0
 urllib3==2.8.0
 whitenoise==6.12.0
