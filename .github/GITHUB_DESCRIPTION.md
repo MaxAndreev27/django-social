@@ -11,7 +11,7 @@ A modern social media platform for sharing images, connecting with users, and di
 ## Long Description / About
 
 ```
-Django Social is an open-source social media platform built with Django 5.1 and Python 3.9+. Users can share images, build communities, like content, follow other users, and discover trending images. Features include user authentication, OAuth2 integration, image ranking, responsive design, Docker support, and a full admin dashboard.
+Django Social is an open-source social media platform built with Django 6.1 and Python 3.12+. Users can share images, build communities, like content, follow other users, and discover trending images. Features include user authentication, OAuth2 integration, image ranking, responsive design, Docker support, and a full admin dashboard.
 ```
 
 ## Topics (Tags)

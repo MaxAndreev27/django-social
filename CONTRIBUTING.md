@@ -76,20 +76,19 @@ All Python code should follow [PEP 8](https://www.python.org/dev/peps/pep-0008/)
 
 1. Fork the repository
 2. Clone your fork: `git clone https://github.com/your-username/django-social.git`
-3. Create a virtual environment: `python -m venv venv`
-4. Activate it: `source venv/bin/activate` (on Windows: `venv\Scripts\activate`)
-5. Install dependencies: `pip install -r requirements.txt`
-6. Create a new branch: `git checkout -b my-feature-branch`
-7. Make your changes
-8. Run tests: `python manage.py test`
-9. Push to your fork and create a Pull Request
+3. Install [uv](https://docs.astral.sh/uv/getting-started/installation/)
+4. Create the virtual environment and install dependencies (including dev tools): `uv sync`
+5. Create a new branch: `git checkout -b my-feature-branch`
+6. Make your changes (add dependencies with `uv add <package>`, dev ones with `uv add --dev <package>`, and commit `pyproject.toml` and `uv.lock`)
+7. Run tests: `uv run manage.py test`
+8. Push to your fork and create a Pull Request
 
 ## Testing
 
 - Write tests for new features
 - Ensure all tests pass before submitting a PR
 - Aim for good code coverage
-- Run: `python manage.py test` to run the test suite
+- Run: `uv run manage.py test` to run the test suite
 
 ## License
 

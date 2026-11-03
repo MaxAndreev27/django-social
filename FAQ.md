@@ -26,20 +26,19 @@ Please read our [Contributing Guide](CONTRIBUTING.md) for detailed instructions 
 
 ### What are the system requirements?
 
-- Python 3.9+
-- Django 4.0+
+- Python 3.12+
+- uv
+- Django 6.1+
 - PostgreSQL 12+ (recommended for production)
 - Docker (optional, for containerized deployment)
 
 ### How do I install Django Social?
 
 1. Clone the repository: `git clone https://github.com/MaxAndreev27/django-social.git`
-2. Create a virtual environment: `python -m venv venv`
-3. Activate it: `source venv/bin/activate` (or `venv\Scripts\activate` on Windows)
-4. Install dependencies: `pip install -r requirements.txt`
-5. Run migrations: `python manage.py migrate`
-6. Create a superuser: `python manage.py createsuperuser`
-7. Run the development server: `python manage.py runserver`
+2. Install dependencies and create the virtual environment: `uv sync`
+3. Run migrations: `uv run manage.py migrate`
+4. Create a superuser: `uv run manage.py createsuperuser`
+5. Run the development server: `uv run manage.py runserver`
 
 ### Can I use Django Social with Docker?
 

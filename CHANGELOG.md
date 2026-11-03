@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Migrated dependency management from pip/requirements.txt to uv (`pyproject.toml`, `uv.lock`), including Dockerfile, CI, Dependabot and docs
+
 ### Added
 
 - Community Standards documentation

@@ -15,39 +15,39 @@ This document provides guidelines for testing Django Social.
 ### Prerequisites
 
 ```bash
-pip install -r requirements.txt
+uv sync
 ```
 
 ### Run All Tests
 
 ```bash
-python manage.py test
+uv run manage.py test
 ```
 
 ### Run Tests for Specific App
 
 ```bash
-python manage.py test account
-python manage.py test images
-python manage.py test actions
+uv run manage.py test account
+uv run manage.py test images
+uv run manage.py test actions
 ```
 
 ### Run Specific Test Module
 
 ```bash
-python manage.py test account.tests.test_models
+uv run manage.py test account.tests.test_models
 ```
 
 ### Run Specific Test Case
 
 ```bash
-python manage.py test account.tests.TestUserModel.test_user_creation
+uv run manage.py test account.tests.TestUserModel.test_user_creation
 ```
 
 ### Run Tests with Verbosity
 
 ```bash
-python manage.py test --verbosity=2
+uv run manage.py test --verbosity=2
 ```
 
 ### Run Tests with Coverage
@@ -61,7 +61,7 @@ coverage html  # Generate HTML coverage report
 ### Run Tests in Parallel
 
 ```bash
-python manage.py test --parallel
+uv run manage.py test --parallel
 ```
 
 ## Writing Tests
@@ -241,7 +241,7 @@ To run tests before committing:
 
 ```bash
 # Run tests
-python manage.py test
+uv run manage.py test
 
 # Check code style
 flake8 .
@@ -355,7 +355,7 @@ class WebsiteUser(HttpUser):
 Run with:
 
 ```bash
-pip install locust
+uv add --dev locust
 locust -f locustfile.py
 ```
 

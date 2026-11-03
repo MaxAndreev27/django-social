@@ -34,7 +34,7 @@ If applicable, add screenshots to help explain your problem.
 ## Environment (please complete the following information):
 
 - OS: [e.g. Linux, Windows, macOS]
-- Python Version: [e.g. 3.9, 3.10, 3.11]
+- Python Version: [e.g. 3.12.16]
 - Django Version: [e.g. 4.0, 4.1]
 - Browser: [e.g. Chrome, Firefox, Safari]
 

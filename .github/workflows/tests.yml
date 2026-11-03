@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.13']
+        python-version: ['3.12']
 
     services:
       postgres:
@@ -31,36 +31,33 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
+    - name: Install uv
+      uses: astral-sh/setup-uv@v6
       with:
         python-version: ${{ matrix.python-version }}
-        cache: 'pip'
+        enable-cache: true
 
     - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install coverage flake8 black isort
+      run: uv sync --locked
 
     - name: Lint with flake8
       run: |
         # Stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        uv run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # Exit-zero treats all errors as warnings
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=79 --statistics
+        uv run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=79 --statistics
 
     - name: Check formatting with black
-      run: black --check .
+      run: uv run black --check .
 
     - name: Check import sorting with isort
-      run: isort --check-only .
+      run: uv run isort --check-only .
 
     - name: Run tests with coverage
       run: |
-        coverage run --source='.' manage.py test
-        coverage report
-        coverage xml
+        uv run coverage run --source='.' manage.py test
+        uv run coverage report
+        uv run coverage xml
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
@@ -69,7 +66,7 @@ jobs:
         fail_ci_if_error: false
 
     - name: Run Django checks
-      run: python manage.py check
+      run: uv run python manage.py check
 
     - name: Create migrations
-      run: python manage.py makemigrations --dry-run --check
+      run: uv run python manage.py makemigrations --dry-run --check

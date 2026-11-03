@@ -24,9 +24,9 @@ A modern, feature-rich social media platform built with Django, Python, and cutt
 
 ### Prerequisites
 
-- Python 3.9+
+- Python 3.12+ (uv can install the pinned 3.12.16 for you)
 - PostgreSQL (recommended) or SQLite
-- pip and virtualenv
+- [uv](https://docs.astral.sh/uv/)
 
 ### Installation
 
@@ -35,21 +35,17 @@ A modern, feature-rich social media platform built with Django, Python, and cutt
 git clone https://github.com/MaxAndreev27/django-social.git
 cd django-social
 
-# Create and activate virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
+# Create the virtual environment and install dependencies (from uv.lock)
+uv sync
 
 # Run migrations
-python manage.py migrate
+uv run manage.py migrate
 
 # Create superuser
-python manage.py createsuperuser
+uv run manage.py createsuperuser
 
 # Run development server
-python manage.py runserver
+uv run manage.py runserver
 ```
 
 Visit `http://localhost:8000` and start using Django Social!
@@ -85,7 +81,8 @@ docker-compose up -d
 ```
 django-social/
 ├── manage.py                    # Django management script
-├── requirements.txt             # Python dependencies
+├── pyproject.toml               # Project metadata and dependencies (uv)
+├── uv.lock                      # Locked dependency versions
 ├── Dockerfile                   # Container configuration
 ├── docker-compose.yml          # Multi-container setup
 ├── fly.toml                    # Fly.io deployment config
@@ -178,15 +175,15 @@ SOCIAL_AUTH_GITHUB_SECRET=your-github-secret
 
 ```bash
 # Run all tests
-python manage.py test
+uv run manage.py test
 
 # Run tests with coverage
 coverage run --source='.' manage.py test
 coverage report
 
 # Run specific app tests
-python manage.py test account
-python manage.py test images
+uv run manage.py test account
+uv run manage.py test images
 ```
 
 ## 🚀 Deployment

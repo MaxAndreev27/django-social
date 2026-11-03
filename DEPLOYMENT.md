@@ -18,8 +18,8 @@ This guide provides instructions for deploying Django Social to production.
 
 ## Prerequisites
 
-- Python 3.9+
-- pip and virtualenv
+- Python 3.12+
+- uv
 - Git
 - PostgreSQL (recommended for production)
 - Redis (optional, for caching)
@@ -41,10 +41,10 @@ This guide provides instructions for deploying Django Social to production.
 echo "web: gunicorn config.wsgi" > Procfile
 
 # Create runtime.txt (optional)
-echo "python-3.11.0" > runtime.txt
+echo "python-3.12.16" > runtime.txt
 
-# Ensure requirements.txt is updated
-pip freeze > requirements.txt
+# Heroku reads dependencies from requirements.txt; export it from uv.lock
+uv export --no-dev --no-hashes -o requirements.txt
 ```
 
 ### 3. Deploy
@@ -140,7 +140,7 @@ Run with: `docker-compose up -d`
 sudo apt update && sudo apt upgrade -y
 
 # Install dependencies
-sudo apt install -y python3 python3-pip python3-venv postgresql nginx git
+sudo apt install -y postgresql nginx git
 
 # Create application user
 sudo useradd -m -s /bin/bash django
@@ -150,17 +150,15 @@ sudo su - django
 ### 2. Application Setup
 
 ```bash
+# Install uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
 # Clone repository
 git clone https://github.com/MaxAndreev27/django-social.git
 cd django-social
 
-# Create virtual environment
-python3 -m venv venv
-source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-pip install gunicorn
+# Create virtual environment and install locked dependencies
+uv sync --locked --no-dev
 
 # Create .env file
 cat > .env << EOF
@@ -193,9 +191,9 @@ GRANT ALL PRIVILEGES ON DATABASE django_social TO django_user;
 ### 4. Run Migrations
 
 ```bash
-python manage.py migrate
-python manage.py collectstatic --noinput
-python manage.py createsuperuser
+uv run manage.py migrate
+uv run manage.py collectstatic --noinput
+uv run manage.py createsuperuser
 ```
 
 ### 5. Configure Gunicorn
@@ -210,7 +208,7 @@ After=network.target
 [Service]
 User=django
 WorkingDirectory=/home/django/django-social
-ExecStart=/home/django/django-social/venv/bin/gunicorn \
+ExecStart=/home/django/django-social/.venv/bin/gunicorn \
     --workers 4 \
     --bind 127.0.0.1:8000 \
     config.wsgi:application
@@ -363,13 +361,13 @@ psql -U django_user django_social < backup.sql
 ### Collect Static Files
 
 ```bash
-python manage.py collectstatic --noinput
+uv run manage.py collectstatic --noinput
 ```
 
 ### Serve with WhiteNoise (Alternative to Nginx)
 
 ```bash
-pip install whitenoise
+uv add whitenoise
 ```
 
 ## Media Files
@@ -386,7 +384,7 @@ sudo chown -R django:www-data media/
 ### AWS S3
 
 ```bash
-pip install django-storages boto3
+uv add django-storages boto3
 
 # Configure in settings.py
 if USE_S3:
@@ -436,7 +434,7 @@ sudo tail -f /var/log/nginx/error.log
 ### Static Files Not Loading
 
 ```bash
-python manage.py collectstatic --clear --noinput
+uv run manage.py collectstatic --clear --noinput
 sudo systemctl restart nginx
 ```
 
@@ -444,7 +442,7 @@ sudo systemctl restart nginx
 
 ```bash
 # Test connection
-python manage.py dbshell
+uv run manage.py dbshell
 
 # Check PostgreSQL service
 sudo systemctl status postgresql
@@ -467,7 +465,7 @@ sudo systemctl restart django-social
 
 ```bash
 # Enable Django Debug Toolbar
-pip install django-debug-toolbar
+uv add --dev django-debug-toolbar
 
 # Check database queries
 # Use Django ORM query optimization
